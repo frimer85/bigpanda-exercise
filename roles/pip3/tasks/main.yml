@@ -1,3 +1,8 @@
 # Install (Flask) python package.
 - pip:
     name: flask
+    executable: pip3
+
+- pip:
+    name: Flask-AutoIndex
+    executable: pip3

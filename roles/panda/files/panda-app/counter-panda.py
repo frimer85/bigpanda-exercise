@@ -12,8 +12,11 @@ def before_request():
 
 @app.route('/',methods=['GET', 'POST'])
 def home():
-    global postCount
-    return "Number of POST requests: " + str(postCount) + "\n"
+    if request.method == "GET":
+        global postCount
+        return "Number of POST requests: " + str(postCount) + "\n"
+    else:
+        return "\n"
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')

@@ -1,0 +1,3 @@
+# Install (Flask) python package.
+- pip:
+    name: flask

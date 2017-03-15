@@ -5,6 +5,7 @@ import argparse
 
 __author__ = 'Moran Frimer'
 
+service_list = ["gify-panda", "counter-panda"]
 
 def get_args():
     '''This function parses and return arguments passed in'''
@@ -13,7 +14,7 @@ def get_args():
         description='Deployment script for python nanoservices: gify-panda and counter-panda')
     # Add arguments
     parser.add_argument(
-        '-s', '--service', type=str, help='Service Name', required=True)
+        '-s', '--service', type=str, help='Service Name. '+str(service_list), required=True)
     parser.add_argument(
         '-b', '--branch', type=str, help='Branch to deploy', required=True)
     # Array for all arguments passed to script
@@ -26,6 +27,9 @@ def get_args():
 
 service, branch = get_args()
 
+if service not in service_list:
+    print("ERROR: service argument must be on of this: " + str(service_list))
+    exit(1)
 
 os.system("git fetch")
 os.system("git checkout " + branch)

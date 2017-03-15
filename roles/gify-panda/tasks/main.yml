@@ -1,0 +1,4 @@
+---
+- name: copy panda app
+  copy: src=panda-app dest=/tmp/ owner=root group=root mode=0755
+

@@ -13,4 +13,4 @@
     - { role: python3, tags: python3 }
     - { role: monit, tags: monit }
     - { role: pip3, tags: pip3 }
-    - { role: "{{ service }}", tags: "{{ service }}" }
+    - { role: "{{ service|default('gify-panda') }}", tags: "{{ service|default('gify-panda') }}" }

@@ -1,0 +1,7 @@
+---
+- name: Install python3 dependencies
+  become: yes
+  apt: pkg={{item}} state=installed
+  with_items:
+    - python3-pip
+

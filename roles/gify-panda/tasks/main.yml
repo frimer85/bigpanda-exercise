@@ -8,3 +8,7 @@
 - service:
     name: gify-panda
     state: started
+
+- monit:
+    name: gify-panda
+    state: started

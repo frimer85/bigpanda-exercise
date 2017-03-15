@@ -12,4 +12,4 @@
   roles:
     - { role: python3, tags: python3 }
     - { role: pip3, tags: pip3 }
-    - { role: panda, tags: panda }
+    - { role: gify-panda, tags: gify-panda }

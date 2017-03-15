@@ -1,4 +1,10 @@
 ---
-- name: copy panda app
+- name: copy counter-panda app
   copy: src=panda-app dest=/tmp/ owner=root group=root mode=0755
 
+- name: copy counter-panda service
+  copy: src=counter-panda.service dest=/etc/init.d/counter-panda owner=root group=root mode=0755
+
+- service:
+    name: counter-panda
+    state: started

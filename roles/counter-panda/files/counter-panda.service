@@ -35,6 +35,15 @@ stop() {
   echo 'Service stopped' >&2
 }
 
+status() {
+  if [ ! -f "$PIDFILE" ] || ! kill -0 $(cat "$PIDFILE"); then
+    echo 'Service not running' >&2
+    return 1
+  fi
+  echo 'Service running' >&2
+  return 0
+}
+
 uninstall() {
   echo -n "Are you really sure you want to uninstall this service? That cannot be undone. [yes|No] "
   local SURE
@@ -55,6 +64,9 @@ case "$1" in
   stop)
     stop
     ;;
+  status)
+    status
+    ;;
   uninstall)
     uninstall
     ;;
@@ -63,5 +75,5 @@ case "$1" in
     start
     ;;
   *)
-    echo "Usage: $0 {start|stop|restart|uninstall}"
+    echo "Usage: $0 {start|stop|status|restart|uninstall}"
 esac

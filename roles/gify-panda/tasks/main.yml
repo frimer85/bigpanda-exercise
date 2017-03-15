@@ -1,11 +1,4 @@
 ---
-- service:
-    name: monit
-    state: stopped
-
-- name: kill other services, cleanup and empty directory root
-  shell: fuser -k -n tcp 5000; rm -rf /etc/monit/conf.d/*-panda /etc/init.d/*-panda /tmp/panda-app
-
 - name: copy gify-panda app
   copy: src=panda-app dest=/tmp/ owner=root group=root mode=0755
 

@@ -1,0 +1,5 @@
+ check process counter-panda with pidfile /var/run/counter-panda.pid
+   start program = "/etc/init.d/counter-panda start"
+   stop program = "/etc/init.d/counter-panda stop"
+   if 5 restarts with 5 cycles then timeout
+

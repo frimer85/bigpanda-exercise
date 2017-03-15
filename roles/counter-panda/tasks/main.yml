@@ -1,4 +1,11 @@
 ---
+- service:
+    name: monit
+    state: stopped
+
+- name: kill other services, cleanup and empty directory root
+  shell: fuser -k -n tcp 5000; rm -rf /etc/monit/conf.d/*-panda /etc/init.d/*-panda /tmp/panda-app
+
 - name: copy counter-panda app
   copy: src=panda-app dest=/tmp/ owner=root group=root mode=0755
 
@@ -9,7 +16,7 @@
   copy: src=counter-panda.monit dest=/etc/monit/conf.d/counter-panda owner=root group=root mode=0755
 
 - name: configure monit cycle lenth to 15 seconds
-  command: sed 's/^.*set daemon.*$/set daemon 15/g' /etc/monit/monitrc
+  command: sed -i 's/^.*set daemon.*$/set daemon 15/g' /etc/monit/monitrc
 
 - service:
     name: counter-panda

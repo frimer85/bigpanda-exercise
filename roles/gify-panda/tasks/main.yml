@@ -5,10 +5,16 @@
 - name: copy gify-panda service
   copy: src=gify-panda.service dest=/etc/init.d/gify-panda owner=root group=root mode=0755
 
+- name: copy gify-panda monit config
+  copy: src=gify-panda.monit dest=/etc/monit/conf.d/gify-panda owner=root group=root mode=0755
+
+- name: configure monit cycle lenth to 15 seconds
+  command: sed 's/^.*set daemon.*$/set daemon 15/g' /etc/monit/monitrc
+
 - service:
     name: gify-panda
     state: started
 
-- monit:
-    name: gify-panda
-    state: started
+- service:
+    name: monit
+    state: restarted

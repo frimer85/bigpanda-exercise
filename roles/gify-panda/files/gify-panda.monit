@@ -1,0 +1,5 @@
+ check process gify-panda with pidfile /var/run/gify-panda.pid
+   start program = "/etc/init.d/gify-panda start"
+   stop program = "/etc/init.d/gify-panda stop"
+   if 5 restarts with 5 cycles then timeout
+
